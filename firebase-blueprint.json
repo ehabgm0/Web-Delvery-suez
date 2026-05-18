@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "App user profile (customer or captain)",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["customer", "captain", "admin"] },
+        "phone": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "pending", "inactive"] },
+        "isVip": { "type": "boolean" },
+        "isOnline": { "type": "boolean" },
+        "walletBalance": { "type": "number" },
+        "myReferralCode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role", "phone", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Delivery order",
+      "type": "object",
+      "properties": {
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerIsVip": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["searching", "accepted", "picked_up", "delivered", "cancelled"] },
+        "pickup": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          }
+        },
+        "dropoff": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          }
+        },
+        "details": { "type": "string" },
+        "initialPrice": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customerId", "status", "initialPrice"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Delivery orders"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Delivery Suez Online - بوابة السويس للتوصيل",
+  "description": "المنصة الرسمية والشاملة لخدمات التوصيل والدليفري في مدينة السويس. تغطية كاملة لجميع المناطق، دعم فني، وتطبيق متكامل للعملاء والطيارين.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
