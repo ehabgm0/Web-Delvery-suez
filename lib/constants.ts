@@ -13,6 +13,12 @@ export const AREAS = [
   { slug: 'kabbouty', name: 'الكبوتي', nameEn: 'Kabbouty' },
   { slug: 'tahreek', name: 'التحريك', nameEn: 'Tahreek' },
   { slug: 'mousa', name: 'عيون موسى', nameEn: 'Oyoun Mousa' },
+  { slug: 'gharib', name: 'حي الغريب', nameEn: 'El Gharib' },
+  { slug: 'massaed', name: 'المساعد', nameEn: 'Massaed' },
+  { slug: 'amal', name: 'حي الأمل', nameEn: 'Amal District' },
+  { slug: 'rowad', name: 'الرواد', nameEn: 'Rowad' },
+  { slug: 'shorouk', name: 'حي الشروق', nameEn: 'Shorouk' },
+  { slug: 'king-abdullah', name: 'مدينة الملك عبد الله', nameEn: 'King Abdullah' },
 ];
 
 export const SERVICES = [
@@ -24,6 +30,10 @@ export const SERVICES = [
   { slug: 'express', name: 'شحن سريع', nameEn: 'Express Shipping' },
   { slug: 'night', name: 'توصيل ليلي', nameEn: 'Night Delivery' },
   { slug: 'corporate', name: 'توصيل شركات', nameEn: 'Corporate Delivery' },
+  { slug: 'private-driver', name: 'طيار خاص', nameEn: 'Private Captain' },
+  { slug: 'internal-shipping', name: 'شحن داخلي', nameEn: 'Internal Shipping' },
+  { slug: 'gift-delivery', name: 'توصيل هدايا', nameEn: 'Gifts Delivery' },
+  { slug: 'daily-captain', name: 'طيار فري لانس باليومية', nameEn: 'Daily Rate Courier' },
 ];
 
 export const KEYWORDS = [
@@ -34,6 +44,19 @@ export const KEYWORDS = [
   { slug: 'courier-suez', name: 'مندوب توصيل بالسويس', nameEn: 'Courier in Suez' },
   { slug: 'order-delivery', name: 'تطبيق توصيل طلبات', nameEn: 'Order Delivery App' },
   { slug: '24-hours', name: 'توصيل 24 ساعة السويس', nameEn: '24 Hours Delivery Suez' },
+  { slug: 'private-captain', name: 'طيار خاص في السويس', nameEn: 'Private Captain in Suez' },
+  { slug: 'internal-cargo', name: 'شحن داخلي السويس توصيل اوردرات', nameEn: 'Suez Internal Shipping Order Delivery' },
+  { slug: 'order-courier', name: 'توصيل اوردر السويس فوري', nameEn: 'Instant Suez Order Delivery' },
+  { slug: 'delivery-pharmacies', name: 'دليفري صيدليات السويس طوال اليوم', nameEn: 'Suez Pharmacies Delivery 24/7' },
+  { slug: 'cheapest-courier', name: 'أرخص طيار خاص بالسويس', nameEn: 'Cheapest Private Captain in Suez' },
+  { slug: 'private-pilot-suez', name: 'مكتب توصيل طلبات السويس دليفري شحن', nameEn: 'Suez Delivery and Shipping Offices' },
+  { slug: 'suez-captain-daily', name: 'مطلوب طيار دليفري باليومية السويس', nameEn: 'Delivery Captain on Daily Basis Suez' },
+  { slug: 'gift-delivery-suez', name: 'توصيل هدايا وورود السويس', nameEn: 'Suez Gift and Flower Delivery' },
+  { slug: 'whatsapp-delivery-suez', name: 'رقم دليفري السويس واتساب', nameEn: 'Suez Delivery WhatsApp Number' },
+  { slug: 'suez-instant-delivery', name: 'شحن طرود وتوصيل بضائع السويس', nameEn: 'Parcel Shipping and Goods Delivery Suez' },
+  { slug: 'delivery-salam-suez', name: 'دليفري السلام 1 و السلام 2 السويس', nameEn: 'Delivery in Salam 1 and Salam 2 Suez' },
+  { slug: 'delivery-arbayeen-suez', name: 'دليفري حي الأربعين السويس', nameEn: 'Delivery in Arbayeen District Suez' },
+  { slug: 'delivery-faisal-suez', name: 'دليفري حي فيصل السويس', nameEn: 'Delivery in Faisal District Suez' },
 ];
 
 export const BLOG_POSTS = [
@@ -42,4 +65,11 @@ export const BLOG_POSTS = [
   { slug: 'best-restaurants', title: 'أفضل مطاعم السويس للتوصيل', date: '2024-05-16' },
   { slug: 'prices', title: 'أسعار التوصيل في السويس', date: '2024-05-15' },
   { slug: 'news', title: 'أخبار وعروض ديليفري السويس', date: '2024-05-14' },
+];
+
+export const NEWS_ITEMS = [
+  { id: '1', title: 'افتتاح خدمة التوصيل في السويس الجديدة رسمياً', date: '2024-05-18', category: 'تغطية' },
+  { id: '2', title: 'عروض شهر مايو: خصم 50% على أول طلب توصيل مطاعم', date: '2024-05-15', category: 'عروض' },
+  { id: '3', title: 'ديليفري السويس يحقق رقماً قياسياً: 1000 طلب في اليوم الواحد', date: '2024-05-10', category: 'إنجازات' },
+  { id: '4', title: 'تحديثات جديدة في تطبيق الطيارين لتحسين تجربة التوصيل', date: '2024-05-05', category: 'تحديثات' },
 ];

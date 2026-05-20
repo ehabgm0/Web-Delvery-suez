@@ -3,8 +3,16 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Truck, ShoppingBag, Pill, Zap, ChevronLeft, Phone, BadgeCheck, Clock, ShieldCheck, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import SafeImage from '@/components/SafeImage';
 import { SERVICES, AREAS } from '@/lib/constants';
 import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+  return SERVICES.map((service) => ({
+    slug: service.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -163,7 +171,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
               
               <div className="relative group overflow-hidden rounded-[3rem]">
-                <img src="https://picsum.photos/seed/suez-city/600/800" alt="Suez City" className="w-full aspect-[3/4] object-cover group-hover:scale-110 transition-transform duration-700" />
+                <SafeImage 
+                  src="/images/suez-city.jpg" 
+                  fallbackSrc="https://picsum.photos/seed/suez-city/600/800"
+                  alt="Suez City"
+                  fill
+                  referrerPolicy="no-referrer"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
                 <div className="absolute bottom-8 right-8 text-white text-right">
                   <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2">السويس - السلام 1</p>

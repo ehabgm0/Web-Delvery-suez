@@ -29,6 +29,14 @@
         "customerName": { "type": "string" },
         "customerPhone": { "type": "string" },
         "customerIsVip": { "type": "boolean" },
+        "captainId": { "type": "string" },
+        "captainLocation": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" }
+          }
+        },
         "status": { "type": "string", "enum": ["searching", "accepted", "picked_up", "delivered", "cancelled"] },
         "pickup": {
           "type": "object",

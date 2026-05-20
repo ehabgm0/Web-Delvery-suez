@@ -18,17 +18,70 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Delivery Suez Online | دليفري السويس أونلاين',
-  description: 'المنصة الرسمية والشاملة لخدمات التوصيل والدليفري في مدينة السويس. تغطية كاملة لجميع المناطق، دعم فني، وتطبيق متكامل للعملاء والطيارين.',
-  keywords: 'دليفري السويس, توصيل السويس, طيار السويس, مندوب توصيل السويس, أسرع دليفري في السويس, توصيل طلبات السلام 1, توصيل مطاعم السويس',
+  metadataBase: new URL('https://delivery-suez.online'),
+  title: {
+    default: 'دليفري السويس أونلاين | طيار خاص وتوصيل طلبات 24 ساعة',
+    template: '%s | ديليفري السويس أونلاين'
+  },
+  description: 'منصة ديليفري السويس أونلاين لتوصيل الطلبات والشحن الداخلي وحجز طيار خاص في السويس. خدمة فورية 24 ساعة لتوصيل المطاعم، الصيدليات، والمشاوير لجميع الأحياء (السلام، الأربعين، فيصل، بورتوفيق).',
+  keywords: [
+    'دليفري السويس',
+    'ديليفري السويس',
+    'طيار خاص السويس',
+    'توصيل طلبات السويس',
+    'شحن داخلي السويس',
+    'مندوب توصيل السويس',
+    'رقم دليفري السويس',
+    'دليفري السلام السويس',
+    'دليفري الاربعين السويس',
+    'دليفري فيصل السويس',
+    'طيار دليفري باليومية',
+    'توصيل اوردرات السويس',
+    'شركة شحن بالسويس',
+    'أسرع دليفري في السويس',
+    'توصيل صيدليات السويس',
+    'مكاتب شحن السويس',
+    'طيار فري لانس السويس',
+    'توصيل السويس 24 ساعة',
+    'Delivery Suez Online',
+    'Suez Delivery'
+  ].join(', '),
+  alternates: {
+    canonical: 'https://delivery-suez.online',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'Delivery Suez Online | بوابة السويس للتوصيل',
-    description: 'أسرع وأسهل نظام توصيل في مدينة السويس وكل أحيائها.',
+    title: 'دليفري السويس أونلاين | أسرع خدمة توصيل وشحن داخلي في مدينة السويس',
+    description: 'احجز طيار خاص أو اطلب توصيل فوري لمقاضيك المنزلية والطبية في السويس طوال 24 ساعة.',
     url: 'https://delivery-suez.online',
-    siteName: 'Delivery Suez',
+    siteName: 'دليفري السويس أونلاين',
     locale: 'ar_EG',
     type: 'website',
+    images: [
+      {
+        url: 'https://picsum.photos/seed/suez-seo/1200/630',
+        width: 1200,
+        height: 630,
+        alt: 'بوابة التوصيل الرسمية بالسويس',
+      }
+    ]
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'دليفري السويس أونلاين | طيار خاص وتوصيل طلبات السويس',
+    description: 'المنصة المتكاملة للتوصيل والخدمات اللوجستية والشحن الداخلي في السويس بكافة أحيائها.',
+    images: ['https://picsum.photos/seed/suez-seo/1200/630'],
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -3,7 +3,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { MapPin, ChevronLeft, Truck, Clock, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AREAS } from '@/lib/constants';
+import SafeImage from '@/components/SafeImage';
 
 export const metadata = {
   title: 'كل مناطق وأحياء السويس | دليفري السويس أونلاين',
@@ -28,10 +30,13 @@ export default function AreasPage() {
             {AREAS.map((area, i) => (
               <Link href={`/area/${area.slug}`} key={i} className="group">
                 <div className="relative overflow-hidden rounded-[2.5rem] aspect-[4/5] bg-slate-100 shadow-xl shadow-slate-200/50">
-                  <img 
-                    src={`https://picsum.photos/seed/${area.slug}/500/650`} 
-                    alt={area.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                  <SafeImage 
+                    src={`/images/areas/${area.slug}.jpg`} 
+                    fallbackSrc={`https://picsum.photos/seed/${area.slug}/500/650`}
+                    alt={area.name}
+                    fill
+                    referrerPolicy="no-referrer"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent" />
                   <div className="absolute bottom-8 right-8 text-white text-right">
@@ -69,7 +74,14 @@ export default function AreasPage() {
                   </div>
                 </div>
                 <div className="aspect-video bg-slate-100 rounded-3xl overflow-hidden relative grayscale opacity-50">
-                  <img src="https://picsum.photos/seed/map/600/400" alt="Map" className="w-full h-full object-cover" />
+                  <SafeImage 
+                    src="/images/map-placeholder.jpg" 
+                    fallbackSrc="https://picsum.photos/seed/map/600/400"
+                    alt="Map"
+                    fill
+                    referrerPolicy="no-referrer"
+                    className="object-cover" 
+                  />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl">
                       <div className="w-4 h-4 bg-brand rounded-full animate-ping" />

@@ -68,8 +68,11 @@ service cloud.firestore {
         (isCaptain() && (
           // Accept action
           (existing().status == 'searching' && incoming().status == 'accepted' && incoming().captainId == request.auth.uid) ||
-          // Progress action
-          (existing().captainId == request.auth.uid && incoming().status in ['picked_up', 'delivered'])
+          // Progress or Location Update action
+          (existing().captainId == request.auth.uid && (
+            incoming().status in ['picked_up', 'delivered'] || 
+            incoming().diff(existing()).affectedKeys().hasOnly(['captainLocation', 'updatedAt'])
+          ))
         ))
       );
     }

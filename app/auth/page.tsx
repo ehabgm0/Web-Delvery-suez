@@ -50,25 +50,20 @@ function AuthContent() {
       
       if (!userSnap.exists()) {
         const referralCode = generateReferral();
-        const userData: any = {
+        const userData = {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
           role: role,
-          phone: "", // Will be updated by user later or collected via UI
+          phone: "",
           walletBalance: 0,
           myReferralCode: referralCode,
+          status: role === 'captain' ? 'pending' : 'active',
+          isOnline: role === 'captain' ? false : undefined,
+          isVip: role === 'customer' ? false : undefined,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
         };
-
-        if (role === 'captain') {
-          userData.status = 'pending';
-          userData.isOnline = false;
-        } else {
-          userData.status = 'active';
-          userData.isVip = false;
-        }
 
         await setDoc(userRef, userData);
       }

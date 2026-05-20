@@ -3,8 +3,16 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Truck, MapPin, Star, ShieldCheck, ChevronLeft, Phone, Facebook, Instagram, MessageSquare, Clock } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AREAS } from '@/lib/constants';
+import SafeImage from '@/components/SafeImage';
 import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+  return AREAS.map((area) => ({
+    slug: area.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -41,7 +49,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
         "provider": {
           "@type": "LocalBusiness",
           "name": `دليفري السويس أونلاين - ${area.name}`,
-          "image": `https://picsum.photos/seed/${area.slug}/800/800`,
+          "image": `https://delivery-suez.online/images/areas/${area.slug}.jpg`,
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "السويس",
@@ -110,10 +118,13 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             </div>
             {/* Abstract Background Design */}
             <div className="absolute -top-20 -left-20 w-80 h-80 bg-brand/20 rounded-full blur-[100px]" />
-            <img 
-              src={`https://picsum.photos/seed/${area.slug}/800/800`} 
+            <SafeImage 
+              src={`/images/areas/${area.slug}.jpg`} 
+              fallbackSrc={`https://picsum.photos/seed/${area.slug}/800/800`}
               alt={area.name} 
-              className="absolute right-0 top-0 h-full w-1/3 object-cover opacity-20 hidden md:block"
+              fill
+              referrerPolicy="no-referrer"
+              className="object-cover opacity-20 hidden md:block"
               style={{ maskImage: 'linear-gradient(to left, black, transparent)' }}
             />
           </div>
@@ -178,10 +189,13 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <h2 className="text-3xl font-display font-black mb-8 border-r-4 border-brand pr-4">موقع {area.name} على الخريطة</h2>
                 <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden bg-slate-200 relative mb-6">
                   {/* We use a placeholder image for map visual context, styled cleanly */}
-                  <img 
-                    src={`https://picsum.photos/seed/map${area.slug}/800/400`} 
+                  <SafeImage 
+                    src={`/images/areas/map-${area.slug}.jpg`} 
+                    fallbackSrc={`https://picsum.photos/seed/map${area.slug}/800/400`}
                     alt={`خريطة توضح منطقة ${area.name} في السويس`}
-                    className="w-full h-full object-cover grayscale opacity-80"
+                    fill
+                    referrerPolicy="no-referrer"
+                    className="object-cover grayscale opacity-80"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="bg-white p-3 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce">

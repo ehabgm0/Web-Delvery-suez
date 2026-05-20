@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
@@ -17,6 +19,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { AREAS, SERVICES } from '@/lib/constants';
+import SafeImage from '@/components/SafeImage';
 
 export default function Home() {
   return (
@@ -51,13 +54,19 @@ export default function Home() {
                 </div>
                 
                 <div className="mt-12 flex items-center gap-6">
-                  <div className="flex -space-x-4 flex-row-reverse">
-                    {[1,2,3,4].map(i => (
-                      <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden">
-                        <img src={`https://picsum.photos/seed/user${i}/100/100`} alt="User" />
-                      </div>
-                    ))}
-                  </div>
+            <div className="flex -space-x-4 rtl:space-x-reverse flex-row-reverse">
+              {[1,2,3,4].map(i => (
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden relative">
+                  <SafeImage 
+                    src={`https://ui-avatars.com/api/?name=User+${i}&background=random`} 
+                    fallbackSrc={`https://ui-avatars.com/api/?name=Suez+User+${i}&background=ea580c&color=fff`}
+                    alt="User"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
                   <div>
                     <div className="flex items-center text-orange-400 gap-1">
                       <Star size={16} fill="currentColor" />
@@ -72,11 +81,13 @@ export default function Home() {
               </div>
 
               <div className="relative hidden lg:block">
-                <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl rotate-3 bg-slate-900 border-8 border-slate-900">
-                  <img 
-                    src="https://picsum.photos/seed/suez/800/1200" 
+                <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl rotate-3 bg-slate-900 border-8 border-slate-900 aspect-[4/5]">
+                  <SafeImage 
+                    src="https://picsum.photos/seed/suez-hero/800/1000" 
+                    fallbackSrc="https://picsum.photos/seed/suez/800/1200"
                     alt="Delivery in Suez" 
-                    className="w-full aspect-[4/5] object-cover"
+                    fill
+                    className="object-cover"
                   />
                   <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white text-right">
                     <div className="flex items-center gap-3 mb-2 justify-end">
@@ -170,10 +181,12 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
               {AREAS.slice(0, 10).map((area, i) => (
                 <Link href={`/area/${area.slug}`} key={i} className="relative group overflow-hidden rounded-[2rem] aspect-[4/5] shadow-lg">
-                  <img 
-                    src={`https://picsum.photos/seed/${area.slug}/500/600`} 
+                  <SafeImage 
+                    src={`/images/areas/${area.slug}.jpg`} 
+                    fallbackSrc={`https://picsum.photos/seed/${area.slug}/500/600`}
                     alt={area.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
                   <div className="absolute bottom-6 right-6 text-white text-right">
@@ -217,7 +230,13 @@ export default function Home() {
                       <div className="absolute top-0 inset-x-0 h-6 bg-slate-950 flex justify-center pt-1.5 z-20">
                         <div className="w-20 h-1.5 rounded-full bg-slate-800" />
                       </div>
-                      <img src="https://picsum.photos/seed/app-screen/400/800" alt="App interface" className="w-full h-full object-cover" />
+                      <SafeImage 
+                        src="https://picsum.photos/seed/app-screen/400/800"
+                        fallbackSrc="https://picsum.photos/seed/suez-app/400/800"
+                        alt="App interface" 
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   </div>
                 </div>
@@ -242,7 +261,13 @@ export default function Home() {
               ].map((item, i) => (
                 <Link href={item.link} key={i} className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 text-right group hover:shadow-xl transition-all">
                   <div className="relative aspect-square overflow-hidden bg-slate-100">
-                    <img src={`https://picsum.photos/seed/post-${i}/600/600`} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <SafeImage 
+                      src={`/images/post-${i + 1}.jpg`} 
+                      fallbackSrc={`https://picsum.photos/seed/post-${i}/600/600`}
+                      alt={item.title} 
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                     <div className="absolute top-6 right-6 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase tracking-widest">
                       {item.type}
                     </div>
@@ -251,8 +276,14 @@ export default function Home() {
                     <div className="flex items-center gap-3 mb-4 justify-end">
                       <span className="font-bold text-slate-900">@deliverysuezonline</span>
                       <div className="w-10 h-10 rounded-full bg-brand p-0.5">
-                        <div className="w-full h-full rounded-full bg-white p-0.5">
-                          <img src="https://picsum.photos/seed/logo/100/100" alt="Logo" className="w-full h-full rounded-full" />
+                        <div className="w-full h-full rounded-full bg-white p-0.5 relative overflow-hidden">
+                          <SafeImage 
+                            src="/images/logo.png" 
+                            fallbackSrc="https://picsum.photos/seed/logo/100/100"
+                            alt="Logo" 
+                            fill
+                            className="rounded-full object-cover"
+                          />
                         </div>
                       </div>
                     </div>
