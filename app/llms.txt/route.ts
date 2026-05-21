@@ -38,6 +38,7 @@ export async function GET() {
 - **دليل الخدمات الشامل:** ${baseUrl}/services
 - **دليل مناطق السويس بالتفصيل:** ${baseUrl}/areas
 - **تسجيل حساب (عميل / طيار):** ${baseUrl}/auth
+- **برنامج التسويق والربح (Affiliate):** ${baseUrl}/affiliate
 - **مدونة السويس الإخبارية:** ${baseUrl}/blog
 - **آخر عروض ومقالات الأخبار:** ${baseUrl}/news
 - **الدعم الفني والشكاوى:** ${baseUrl}/support

@@ -60,11 +60,11 @@ export const KEYWORDS = [
 ];
 
 export const BLOG_POSTS = [
-  { slug: 'become-driver', title: 'كيف تصبح طيار في السويس؟', date: '2024-05-18' },
-  { slug: 'how-to-order', title: 'كيف تطلب دليفري أونلاين؟', date: '2024-05-17' },
-  { slug: 'best-restaurants', title: 'أفضل مطاعم السويس للتوصيل', date: '2024-05-16' },
-  { slug: 'prices', title: 'أسعار التوصيل في السويس', date: '2024-05-15' },
-  { slug: 'news', title: 'أخبار وعروض ديليفري السويس', date: '2024-05-14' },
+  { slug: 'best-restaurants', title: 'أسرع توصيل مطاعم وأكل في السويس طوال 24 ساعة (أفضل خيارات الدليفري)', date: '2026-05-20' },
+  { slug: 'become-driver', title: 'كيف تبدأ شغل دليفري في السويس وتزيد دخلك اليومي كطيار محترف؟', date: '2026-05-19' },
+  { slug: 'private-captain', title: 'حجز طيار خاص في السويس لتوصيل الأغراض والمشاوير العاجلة طوال 24 ساعة', date: '2026-05-18' },
+  { slug: 'internal-shipping', title: 'خدمات الشحن الداخلي وتوصيل الأوردرات لأصحاب الأونلاين ومحلات السويس', date: '2026-05-17' },
+  { slug: 'how-to-order', title: 'كيف تطلب دليفري أونلاين وتضمن توصيل طلباتك بأقصى سرعة في السويس؟', date: '2026-05-16' },
 ];
 
 export const NEWS_ITEMS = [

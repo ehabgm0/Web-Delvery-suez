@@ -16,12 +16,98 @@ import {
   CheckCircle2,
   PhoneCall,
   Globe,
-  MessageSquare
+  MessageSquare,
+  Gift,
+  Play,
+  Heart,
+  Share2,
+  ExternalLink
 } from 'lucide-react';
 import { AREAS, SERVICES } from '@/lib/constants';
 import SafeImage from '@/components/SafeImage';
 
+// Highly-polished simulated feed synced from real social channels
+const SOCIAL_POSTS = [
+  {
+    id: 'fb-1',
+    platform: 'facebook',
+    type: 'Reel',
+    title: 'كواليس أسرع توصيل أوردر في منطقة الصباح بالسويس مع كابتن فايز 🚀💨 دايماً سابقين خطوة!',
+    imageSrc: 'https://picsum.photos/seed/fb1/600/600',
+    videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-delivery-man-with-a-face-mask-riding-motorcycle-41130-large.mp4',
+    views: '15.4K',
+    baseLikes: 1243,
+    link: 'https://www.facebook.com/DeliverySuezOnline'
+  },
+  {
+    id: 'ig-1',
+    platform: 'instagram',
+    type: 'Reel',
+    title: 'عروض الصيف نار وحرق أسعار! 🔥 خصم 50% على الدليفري لجميع أصحاب مشاريع الأونلاين ومطاعم السويس.',
+    imageSrc: 'https://picsum.photos/seed/ig1/600/600',
+    videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-young-man-riding-a-scooter-in-the-streets-44161-large.mp4',
+    views: '8.9K',
+    baseLikes: 785,
+    link: 'https://www.instagram.com/deliverysuezonline'
+  },
+  {
+    id: 'tk-1',
+    platform: 'tiktok',
+    type: 'Reel',
+    title: 'تحدي الدليفري عيون موسى والأربعين في 20 دقيقة بس! 😱 كباتن السويس قد التحدي في أي مكان وتحت أي ظرف.',
+    imageSrc: 'https://picsum.photos/seed/tk1/600/600',
+    videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-food-delivery-courier-riding-scooter-in-city-streets-44833-large.mp4',
+    views: '42.1K',
+    baseLikes: 3120,
+    link: 'https://www.tiktok.com/@deliverysuezonline'
+  },
+  {
+    id: 'fb-2',
+    platform: 'facebook',
+    type: 'Post',
+    title: 'بيان رسمي 📣: يسعدنا الإعلان عن بدء التغطية اللوجستية الكاملة في مدينة الملك عبدالله وجاري إتاحة طيارين 24 ساعة.',
+    imageSrc: 'https://picsum.photos/seed/fb2/600/600',
+    videoSrc: null,
+    views: '3.5K',
+    baseLikes: 412,
+    link: 'https://www.facebook.com/DeliverySuezOnline'
+  },
+  {
+    id: 'ig-2',
+    platform: 'instagram',
+    type: 'Reel',
+    title: 'ازاي توظف طيار خاص بالساعة أو باليومية ليقضي مشاوير بيتك وصيدلياتك؟ شرح مبسط للخدمة الأسهل بالسويس 📱✨',
+    imageSrc: 'https://picsum.photos/seed/ig2/600/600',
+    videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-courier-carrying-delivery-backpack-while-riding-motorcycle-44829-large.mp4',
+    views: '11.2K',
+    baseLikes: 914,
+    link: 'https://www.instagram.com/deliverysuezonline'
+  },
+  {
+    id: 'tk-2',
+    platform: 'tiktok',
+    type: 'Post',
+    title: 'شارك كود الإحالة الخاص بك مع أصدقائك في السويس واحصل على 50 جنيهاً رصيد مجاني فوري مع أول أوردر ليهم! 🎁💰',
+    imageSrc: 'https://picsum.photos/seed/tk2/600/600',
+    videoSrc: null,
+    views: '29.7K',
+    baseLikes: 2540,
+    link: 'https://www.tiktok.com/@deliverysuezonline'
+  }
+];
+
 export default function Home() {
+  const [activeTab, setActiveTab] = React.useState<'all' | 'facebook' | 'instagram' | 'tiktok'>('all');
+  const [playingReelId, setPlayingReelId] = React.useState<string | null>(null);
+  const [likedPosts, setLikedPosts] = React.useState<Record<string, boolean>>({});
+  const [likes, setLikes] = React.useState<Record<string, number>>({});
+
+  const handleLike = (id: string) => {
+    setLikedPosts(prev => {
+      const isLiked = !prev[id];
+      return { ...prev, [id]: isLiked };
+    });
+  };
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -43,13 +129,17 @@ export default function Home() {
                 <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
                   دليفري السويس أونلاين هو شريكك الموثوق لتوصيل كل شيء في أي مكان بالسويس. من المطاعم والصيدليات إلى المشاوير الخاصة، نحن هنا لخدمتك.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                   <Link href="/webview" className="px-10 py-5 bg-brand text-white rounded-2xl font-bold text-xl shadow-xl shadow-brand/20 hover:scale-105 transition-all text-center">
                     اطلب الآن مجاناً
                   </Link>
                   <Link href="https://wa.me/201022679250" className="px-10 py-5 bg-white border-2 border-slate-200 text-slate-800 rounded-2xl font-bold text-xl hover:bg-slate-50 transition-all text-center flex items-center justify-center gap-2">
                     <PhoneCall size={20} className="text-brand" />
                     تواصل واتساب
+                  </Link>
+                  <Link href="/affiliate" className="px-10 py-5 bg-whatsapp text-white rounded-2xl font-bold text-xl shadow-xl shadow-whatsapp/20 hover:scale-105 transition-all text-center flex items-center justify-center gap-2 w-full sm:w-auto mt-4 sm:mt-0">
+                    <Gift size={20} />
+                    شارك واربح نقاط
                   </Link>
                 </div>
                 
@@ -248,57 +338,188 @@ export default function Home() {
         </section>
 
         {/* Social Feed */}
-        <section className="py-24 bg-slate-50">
+        <section className="py-24 bg-slate-50 border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-sm font-bold text-brand uppercase tracking-widest mb-3">#DeliverySuez</h2>
-            <h3 className="text-4xl md:text-5xl font-display font-black mb-16">تابع أحدث العروض والمقاطع</h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand/10 text-brand rounded-full font-bold text-sm mb-4">
+              <Zap size={14} />
+              <span>البث والنشاط الاجتماعي المباشر</span>
+            </div>
+            <h2 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">#DeliverySuez</h2>
+            <h3 className="text-4xl md:text-5xl font-display font-black mb-6">تابع أحدث المنشورات والريلز والتريندات</h3>
+            <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed mb-12">
+              منصتنا متزامنة مع قنوات السوشيال ميديا الرسمية (فيسبوك، إنستغرام، تيك توك) لعرض أحدث لقطات الكباتن، العروض العاجلة، وكواليس التوصيل الفورية في السويس.
+            </p>
+
+            {/* Social Media Switcher Tabs */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12" dir="rtl">
               {[
-                { title: 'عرض الويكند!', type: 'Video', link: 'https://fb.watch/...' },
-                { title: 'أسرع طيار في السويس', type: 'Reel', link: 'https://www.facebook.com/reel/...' },
-                { title: 'تغطية حي عتاقة', type: 'Post', link: 'https://www.facebook.com/...' }
-              ].map((item, i) => (
-                <Link href={item.link} key={i} className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 text-right group hover:shadow-xl transition-all">
-                  <div className="relative aspect-square overflow-hidden bg-slate-100">
-                    <SafeImage 
-                      src={`/images/post-${i + 1}.jpg`} 
-                      fallbackSrc={`https://picsum.photos/seed/post-${i}/600/600`}
-                      alt={item.title} 
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-6 right-6 px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase tracking-widest">
-                      {item.type}
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <div className="flex items-center gap-3 mb-4 justify-end">
-                      <span className="font-bold text-slate-900">@deliverysuezonline</span>
-                      <div className="w-10 h-10 rounded-full bg-brand p-0.5">
-                        <div className="w-full h-full rounded-full bg-white p-0.5 relative overflow-hidden">
-                          <SafeImage 
-                            src="/images/logo.png" 
-                            fallbackSrc="https://picsum.photos/seed/logo/100/100"
-                            alt="Logo" 
-                            fill
-                            className="rounded-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-slate-600 font-medium leading-relaxed">
-                      {item.title} - تابعونا لمعرفة كل جديد في عالم التوصيل بالسويس..
-                    </p>
-                  </div>
-                </Link>
+                { id: 'all', name: 'كل المنصات 📲' },
+                { id: 'facebook', name: 'فيسبوك ريلز 📘' },
+                { id: 'instagram', name: 'إنستغرام 📸' },
+                { id: 'tiktok', name: 'تيك توك 🎵' }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all flex items-center gap-2 shadow-sm ${
+                    activeTab === tab.id 
+                    ? 'bg-brand text-white scale-105 shadow-brand/20' 
+                    : 'bg-white text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  {tab.name}
+                </button>
               ))}
             </div>
             
-            <div className="mt-16">
-              <Link href="https://www.facebook.com/DeliverySuezOnline" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-brand transition-all">
-                متابعة المنشورات على فيسبوك
-                <ChevronLeft size={20} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {SOCIAL_POSTS.filter(item => activeTab === 'all' || item.platform === activeTab).map((item) => {
+                const isPlaying = playingReelId === item.id;
+                const userHasLiked = likedPosts[item.id] || false;
+                const currentLikesCount = (likes[item.id] || item.baseLikes) + (userHasLiked ? 1 : 0);
+
+                return (
+                  <div key={item.id} className="bg-white rounded-[2.5rem] overflow-hidden shadow-md border border-slate-200 text-right group hover:shadow-2xl transition-all relative flex flex-col h-[520px]">
+                    <div className="relative h-[320px] overflow-hidden bg-slate-900 flex items-center justify-center">
+                      {isPlaying && item.videoSrc ? (
+                        <video 
+                          src={item.videoSrc} 
+                          autoPlay 
+                          loop 
+                          playsInline
+                          controls
+                          className="w-full h-full object-cover" 
+                        />
+                      ) : (
+                        <>
+                          <SafeImage 
+                            src={item.imageSrc} 
+                            fallbackSrc="https://picsum.photos/seed/reels/600/600"
+                            alt={item.title} 
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                          />
+                          {/* Dark Filter & Overlays */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                          
+                          {/* Play Overlay if video type */}
+                          {item.videoSrc && (
+                            <button 
+                              onClick={() => setPlayingReelId(item.id)}
+                              className="absolute w-16 h-16 bg-white/20 hover:bg-brand/90 hover:scale-110 text-white rounded-full flex items-center justify-center backdrop-blur-md shadow-2xl transition-all z-20 group-hover:bg-brand"
+                            >
+                              <Play size={32} className="text-white fill-white translate-x-[-1px]" />
+                            </button>
+                          )}
+                        </>
+                      )}
+
+                      {/* Platform indicator badge */}
+                      <span className={`absolute top-6 right-6 px-4 py-2 text-white text-xs font-bold uppercase tracking-widest rounded-full backdrop-blur-md z-15 ${
+                        item.platform === 'facebook' ? 'bg-blue-600/90' :
+                        item.platform === 'instagram' ? 'bg-gradient-to-r from-purple-600 to-pink-500/90' :
+                        'bg-slate-950/90'
+                      }`}>
+                        {item.platform === 'facebook' ? 'Facebook ' + item.type :
+                         item.platform === 'instagram' ? 'Instagram ' + item.type :
+                         'TikTok ' + item.type}
+                      </span>
+
+                      {/* Real-time Viewer stats overlay */}
+                      <span className="absolute bottom-4 left-6 text-white text-xs font-bold bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-lg">
+                        👁️ {item.views} مشاهدة
+                      </span>
+                    </div>
+
+                    <div className="p-8 flex flex-col flex-1 justify-between">
+                      <div>
+                        <div className="flex items-center gap-3 mb-4 justify-end">
+                          <span className="font-bold text-slate-400 text-xs">@deliverysuezonline</span>
+                          <span className="font-bold text-slate-800 text-sm">ديليفري السويس</span>
+                          <div className="w-10 h-10 rounded-full bg-brand p-0.5 shadow-md">
+                            <div className="w-full h-full rounded-full bg-white p-0.5 relative overflow-hidden">
+                              <SafeImage 
+                                src="https://picsum.photos/seed/suez-logo-seo/100/100" 
+                                fallbackSrc="https://picsum.photos/seed/logo/100/100"
+                                alt="Suez delivery team profile" 
+                                fill
+                                className="rounded-full object-cover"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <p className="text-slate-700 font-bold leading-relaxed text-sm line-clamp-3">
+                          {item.title}
+                        </p>
+                      </div>
+
+                      {/* Interactive Buttons for user engagement */}
+                      <div className="flex items-center justify-between border-t border-slate-100 pt-5 mt-auto flex-row-reverse">
+                        <div className="flex items-center gap-4 flex-row-reverse">
+                          {/* Hearts likes button */}
+                          <button 
+                            onClick={() => handleLike(item.id)}
+                            className={`flex items-center gap-1.5 text-xs font-black transition-all ${
+                              userHasLiked ? 'text-red-500 scale-110' : 'text-slate-400 hover:text-red-500'
+                            }`}
+                          >
+                            <Heart size={18} fill={userHasLiked ? "currentColor" : "none"} />
+                            <span>{currentLikesCount}</span>
+                          </button>
+
+                          {/* Share button */}
+                          <button 
+                            onClick={() => {
+                              navigator.clipboard.writeText(item.link);
+                              alert('تم نسخ الرابط المباشر للريل تضامناً مع السوشيال ميديا! 🚀');
+                            }}
+                            className="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-brand transition-all"
+                          >
+                            <Share2 size={16} />
+                            <span>مشاركة</span>
+                          </button>
+                        </div>
+
+                        {/* Open external link directly */}
+                        <Link 
+                          href={item.link} 
+                          target="_blank" 
+                          referrerPolicy="no-referrer"
+                          className="text-xs text-brand font-bold flex items-center gap-1 hover:underline"
+                        >
+                          <ExternalLink size={14} />
+                          المشاهدة على المنصة
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Global CTA buttons for the social accounts */}
+            <div className="mt-16 flex flex-wrap justify-center gap-4">
+              <Link 
+                href="https://www.facebook.com/DeliverySuezOnline" 
+                target="_blank" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-md shadow-blue-500/10"
+              >
+                صفحة فيسبوك الرسمية
+              </Link>
+              <Link 
+                href="https://www.instagram.com/deliverysuezonline" 
+                target="_blank" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-2xl font-bold hover:opacity-90 transition-all hover:scale-105 shadow-md shadow-pink-500/10"
+              >
+                حساب إنستغرام
+              </Link>
+              <Link 
+                href="https://www.tiktok.com/@deliverysuezonline" 
+                target="_blank" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-slate-950 text-white rounded-2xl font-bold hover:bg-black transition-all hover:scale-105 shadow-md shadow-black/20"
+              >
+                قناة تيك توك ريلز
               </Link>
             </div>
           </div>

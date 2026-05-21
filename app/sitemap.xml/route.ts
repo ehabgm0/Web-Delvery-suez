@@ -12,6 +12,7 @@ export async function GET() {
     '/privacy',
     '/terms',
     '/download',
+    '/affiliate',
   ].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
