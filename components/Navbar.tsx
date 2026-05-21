@@ -32,6 +32,7 @@ export default function Navbar() {
             </Link>
             <Link href="/#areas" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">مناطق التغطية</Link>
             <Link href="/affiliate" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">برنامج الشركاء 🎁</Link>
+            <Link href="/developer" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">بوابة المطورين (API) 💻</Link>
             <Link href="/#faq" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">الأسئلة الشائعة</Link>
           </div>
 
@@ -90,6 +91,13 @@ export default function Navbar() {
             className="block font-bold text-slate-800 hover:text-brand transition-colors py-2"
           >
             برنامج الشركاء الكاش 🎁
+          </Link>
+          <Link 
+            href="/developer" 
+            onClick={() => setIsOpen(false)}
+            className="block font-bold text-slate-800 hover:text-brand transition-colors py-2 text-brand"
+          >
+            بوابة المطورين والـ API 💻
           </Link>
           <Link 
             href="/#faq" 

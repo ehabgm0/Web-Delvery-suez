@@ -12,6 +12,12 @@ export const metadata = {
 };
 
 export default function NewsPage() {
+  const localNewsFallbacks: Record<string, string> = {
+    '1': '/images/suez_hero_delivery.png',
+    '2': '/images/suez_courier.png',
+    '3': '/images/suez_port_captain.png'
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -35,7 +41,7 @@ export default function NewsPage() {
                   <div className="w-full md:w-64 aspect-square relative rounded-[2.5rem] overflow-hidden shrink-0">
                     <SafeImage 
                       src={`/images/news/news-${item.id}.jpg`} 
-                      fallbackSrc={`https://picsum.photos/seed/news-${item.id}/400/400`}
+                      fallbackSrc={localNewsFallbacks[item.id] || '/images/suez_hero_delivery.png'}
                       alt={item.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"

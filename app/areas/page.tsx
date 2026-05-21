@@ -27,29 +27,38 @@ export default function AreasPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {AREAS.map((area, i) => (
-              <Link href={`/area/${area.slug}`} key={i} className="group">
-                <div className="relative overflow-hidden rounded-[2.5rem] aspect-[4/5] bg-slate-100 shadow-xl shadow-slate-200/50">
-                  <SafeImage 
-                    src={`/images/areas/${area.slug}.jpg`} 
-                    fallbackSrc={`https://picsum.photos/seed/${area.slug}/500/650`}
-                    alt={area.name}
-                    fill
-                    referrerPolicy="no-referrer"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent" />
-                  <div className="absolute bottom-8 right-8 text-white text-right">
-                    <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2 opacity-80">{area.name}</p>
-                    <h3 className="text-3xl font-display font-black mb-3 italic tracking-tight">{area.arabicName}</h3>
-                    <div className="flex items-center gap-2 text-brand font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span>عرض التغطية</span>
-                      <ChevronLeft size={16} />
+            {AREAS.map((area, i) => {
+              let fallbackFile = '/images/suez_hero_delivery.png';
+              if (['port-tawfik', 'attaka', 'gharib'].includes(area.slug)) {
+                fallbackFile = '/images/suez_port_captain.png';
+              } else if (['ganayen', 'new-suez'].includes(area.slug)) {
+                fallbackFile = '/images/suez_courier.png';
+              }
+
+              return (
+                <Link href={`/area/${area.slug}`} key={i} className="group">
+                  <div className="relative overflow-hidden rounded-[2.5rem] aspect-[4/5] bg-slate-100 shadow-xl shadow-slate-200/50">
+                    <SafeImage 
+                      src={`/images/areas/${area.slug}.jpg`} 
+                      fallbackSrc={fallbackFile}
+                      alt={area.name}
+                      fill
+                      referrerPolicy="no-referrer"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent" />
+                    <div className="absolute bottom-8 right-8 text-white text-right">
+                      <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2 opacity-80">{area.name}</p>
+                      <h3 className="text-3xl font-display font-black mb-3 italic tracking-tight">{area.arabicName}</h3>
+                      <div className="flex items-center gap-2 text-brand font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>عرض التغطية</span>
+                        <ChevronLeft size={16} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="mt-32 p-12 md:p-20 bg-slate-50 rounded-[4rem] border border-slate-100 flex flex-col lg:flex-row items-center gap-16 relative overflow-hidden">
@@ -76,7 +85,7 @@ export default function AreasPage() {
                 <div className="aspect-video bg-slate-100 rounded-3xl overflow-hidden relative grayscale opacity-50">
                   <SafeImage 
                     src="/images/map-placeholder.jpg" 
-                    fallbackSrc="https://picsum.photos/seed/map/600/400"
+                    fallbackSrc="/images/suez_hero_delivery.png"
                     alt="Map"
                     fill
                     referrerPolicy="no-referrer"

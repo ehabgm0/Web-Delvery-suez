@@ -35,7 +35,7 @@ const SOCIAL_POSTS = [
     platform: 'facebook',
     type: 'Reel',
     title: 'كواليس أسرع توصيل أوردر في منطقة الصباح بالسويس مع كابتن فايز 🚀💨 دايماً سابقين خطوة!',
-    imageSrc: 'https://picsum.photos/seed/fb_scooter/600/600',
+    imageSrc: '/images/suez_hero_delivery.png',
     videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-delivery-man-with-a-face-mask-riding-motorcycle-41130-large.mp4',
     embedSrc: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D3136854129929285&show_text=0',
     views: '24.8K',
@@ -47,7 +47,7 @@ const SOCIAL_POSTS = [
     platform: 'instagram',
     type: 'Reel',
     title: 'عروض الصيف نار وحرق أسعار! 🔥 خصم 50% على الدليفري لجميع أصحاب مشاريع الأونلاين ومطاعم السويس.',
-    imageSrc: 'https://picsum.photos/seed/ig_delivery/600/600',
+    imageSrc: '/images/suez_courier.png',
     videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-young-man-riding-a-scooter-in-the-streets-44161-large.mp4',
     embedSrc: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D4537128526367352&show_text=0',
     views: '18.2K',
@@ -59,7 +59,7 @@ const SOCIAL_POSTS = [
     platform: 'tiktok',
     type: 'Reel',
     title: 'تحدي الدليفري عيون موسى والأربعين في 20 دقيقة بس! 😱 كباتن السويس قد التحدي في أي مكان وتحت أي ظرف.',
-    imageSrc: 'https://picsum.photos/seed/tk_scooter/600/600',
+    imageSrc: '/images/suez_port_captain.png',
     videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-food-delivery-courier-riding-scooter-in-city-streets-44833-large.mp4',
     embedSrc: 'https://www.tiktok.com/embed/v2/7161823459142077701',
     views: '65.3K',
@@ -71,7 +71,7 @@ const SOCIAL_POSTS = [
     platform: 'facebook',
     type: 'Post',
     title: 'بيان رسمي 📣: يسعدنا الإعلان عن بدء التغطية اللوجستية الكاملة في مدينة الملك عبدالله وجاري إتاحة طيارين 24 ساعة.',
-    imageSrc: 'https://picsum.photos/seed/fb_post/600/600',
+    imageSrc: '/images/suez_hero_delivery.png',
     videoSrc: null,
     embedSrc: 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FDeliverySuezOnline%2Fposts%2Fpfbid02oB7V1v8bAdWcFRyqFkUrW8oY8j59eS9f9g7e&width=400',
     views: '5.1K',
@@ -83,7 +83,7 @@ const SOCIAL_POSTS = [
     platform: 'instagram',
     type: 'Reel',
     title: 'ازاي توظف طيار خاص بالساعة أو باليومية ليقضي مشاوير بيتك وصيدلياتك؟ شرح مبسط للخدمة الأسهل بالسويس 📱✨',
-    imageSrc: 'https://picsum.photos/seed/ig_rider/600/600',
+    imageSrc: '/images/suez_port_captain.png',
     videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-courier-carrying-delivery-backpack-while-riding-motorcycle-44829-large.mp4',
     embedSrc: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1293026857973059&show_text=0',
     views: '14.9K',
@@ -95,7 +95,7 @@ const SOCIAL_POSTS = [
     platform: 'tiktok',
     type: 'Post',
     title: 'شارك كود الإحالة الخاص بك مع أصدقائك في السويس واحصل على 50 جنيهاً رصيد مجاني فوري مع أول أوردر ليهم! 🎁💰',
-    imageSrc: 'https://picsum.photos/seed/tk_gift/600/600',
+    imageSrc: '/images/suez_courier.png',
     videoSrc: null,
     embedSrc: 'https://www.tiktok.com/embed/v2/7279124021200375046',
     views: '38.6K',
@@ -410,7 +410,7 @@ export default function Home() {
                 <div className="relative aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-md">
                   <SafeImage 
                     src="/images/suez_port_captain.png" 
-                    fallbackSrc="https://picsum.photos/seed/port/800/600"
+                    fallbackSrc="/images/suez_port_captain.png"
                     alt="Suez Port Tewfik Delivery Campaign" 
                     fill
                     className="object-cover"
@@ -458,7 +458,7 @@ export default function Home() {
                 <div className="relative aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-md">
                   <SafeImage 
                     src="/images/suez_courier.png" 
-                    fallbackSrc="https://picsum.photos/seed/salam/800/600"
+                    fallbackSrc="/images/suez_courier.png"
                     alt="Suez Al-Salam Speed Campaign" 
                     fill
                     className="object-cover"
@@ -653,7 +653,7 @@ export default function Home() {
                       <>
                         <SafeImage 
                           src={item.imageSrc} 
-                          fallbackSrc="https://picsum.photos/seed/reels/600/600"
+                          fallbackSrc="/images/suez_hero_delivery.png"
                           alt={item.title} 
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"

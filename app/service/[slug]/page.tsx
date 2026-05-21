@@ -173,7 +173,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="relative group overflow-hidden rounded-[3rem]">
                 <SafeImage 
                   src="/images/suez-city.jpg" 
-                  fallbackSrc="https://picsum.photos/seed/suez-city/600/800"
+                  fallbackSrc="/images/suez_hero_delivery.png"
                   alt="Suez City"
                   fill
                   referrerPolicy="no-referrer"

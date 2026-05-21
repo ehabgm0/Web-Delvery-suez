@@ -21,6 +21,12 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ id:
     notFound();
   }
 
+  const localNewsFallbacks: Record<string, string> = {
+    '1': '/images/suez_hero_delivery.png',
+    '2': '/images/suez_courier.png',
+    '3': '/images/suez_port_captain.png'
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -57,7 +63,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ id:
           <div className="relative aspect-video rounded-[3rem] overflow-hidden mb-16 shadow-2xl">
             <SafeImage 
               src={`/images/news/news-${item.id}.jpg`} 
-              fallbackSrc={`https://picsum.photos/seed/news-long-${item.id}/1200/675`}
+              fallbackSrc={localNewsFallbacks[item.id] || '/images/suez_hero_delivery.png'}
               alt={item.title}
               fill
               className="object-cover"

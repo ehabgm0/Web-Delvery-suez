@@ -46,6 +46,7 @@ export default function Footer() {
               <li><Link href="/blog" className="hover:text-brand transition-colors">مدونة المنصة</Link></li>
               <li><Link href="/webview" className="hover:text-brand transition-colors">لوحة محاكاة وتتبع الكباتن</Link></li>
               <li><Link href="/affiliate" className="hover:text-brand transition-colors">برنامج الشركاء (شارك واكسب) 🎁</Link></li>
+              <li><Link href="/developer" className="hover:text-brand transition-colors text-brand">بوابة المطورين والربط البرمجي (API) 💻</Link></li>
               <li><Link href="https://wa.me/201022679250" target="_blank" className="hover:text-brand transition-colors">الدعم الفني المباشر</Link></li>
             </ul>
           </div>

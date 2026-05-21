@@ -30,7 +30,7 @@ const ARTICLES_DATABASE: Record<string, ArticleData> = {
     readTime: '4 دقائق',
     author: 'المهندس أسامة السويسي',
     authorRole: 'مستشار تطوير الخدمات اللوجستية بمصر والقناة',
-    image: 'https://picsum.photos/seed/revolution/1200/600',
+    image: '/images/suez_hero_delivery.png',
     seoDesc: 'اكتشف كيف غيرت منصة ديليفري السويس أونلاين مجرى الشحن والطلبات العاجلة في السويس باستخدام تقنيات الجي بي إس GPS المتقدمة وتوصيل المطاعم والصيدليات.',
     keywords: 'دليفري السويس, شحن السويس, طيارين السويس, تطبيق السويس ديليفري, لوجستيات السويس',
     contentHtml: `
@@ -62,7 +62,7 @@ const ARTICLES_DATABASE: Record<string, ArticleData> = {
     readTime: '5 دقائق',
     author: 'فريق كتاب السويس',
     authorRole: 'قسم التحليلات المالية بمنصة ديليفري السويس أونلاين',
-    image: 'https://picsum.photos/seed/pricing/1200/600',
+    image: '/images/suez_courier.png',
     seoDesc: 'تقرير مالي متميز يثقف أهالي السويس وأصحاب المطاعم بآليات حساب رسوم التوصيل الشفافة بالجنيه المصري EGP وضمان عائد 100% للطيار الحر.',
     keywords: 'EGP السويس, رسوم الدليفري السويس, أسعار التوصيل بالسويس, محاسبة الكباتن السويس, ديليفري كاش',
     contentHtml: `
@@ -94,7 +94,7 @@ const ARTICLES_DATABASE: Record<string, ArticleData> = {
     readTime: '7 دقائق',
     author: 'الكابتن إبراهيم الغريب',
     authorRole: 'كبير كباتن السويس ومدرب النظم الميدانية',
-    image: 'https://picsum.photos/seed/earnings/1200/600',
+    image: '/images/suez_port_captain.png',
     seoDesc: 'دليل عملي شامل يشرح بالتفاصيل أساليب الالتحاق بأسطول كباتن السويس فري لانس وتحقيق دخل فوري وممتاز بالجنيه المصري EGP والعمل بأوقات حرة.',
     keywords: 'وظائف دليفري السويس, عمل حر السويس, التسجيل كطيار بالسويس, ربح من الاسكوتر بالسويس, كباتن السويس',
     contentHtml: `
@@ -214,7 +214,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="relative aspect-[21/9] w-full rounded-[2.5rem] overflow-hidden mb-12 shadow-md">
             <SafeImage 
               src={article.image} 
-              fallbackSrc="https://picsum.photos/seed/article/1200/600"
+              fallbackSrc="/images/suez_hero_delivery.png"
               alt={article.title} 
               fill
               className="object-cover"

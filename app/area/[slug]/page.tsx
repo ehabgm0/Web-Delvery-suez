@@ -243,7 +243,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             <div className="absolute -top-20 -left-20 w-80 h-80 bg-brand/20 rounded-full blur-[100px]" />
             <SafeImage 
               src={`/images/areas/${area.slug}.jpg`} 
-              fallbackSrc={`https://picsum.photos/seed/${area.slug}/800/800`}
+              fallbackSrc={['port-tawfik', 'attaka', 'gharib'].includes(area.slug) ? '/images/suez_port_captain.png' : ['ganayen', 'new-suez'].includes(area.slug) ? '/images/suez_courier.png' : '/images/suez_hero_delivery.png'}
               alt={area.arabicName} 
               fill
               referrerPolicy="no-referrer"
@@ -317,7 +317,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden bg-slate-200 relative mb-6 border border-slate-200">
                   <SafeImage 
                     src={`/images/areas/map-${area.slug}.jpg`} 
-                    fallbackSrc={`https://picsum.photos/seed/map${area.slug}/800/400`}
+                    fallbackSrc="/images/suez_hero_delivery.png"
                     alt={`خريطة حدود وتغطية منطقة ${area.arabicName} في السويس`}
                     fill
                     referrerPolicy="no-referrer"

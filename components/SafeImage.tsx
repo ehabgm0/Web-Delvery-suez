@@ -8,7 +8,7 @@ interface SafeImageProps extends Omit<ImageProps, 'src'> {
   fallbackSrc?: string;
 }
 
-export default function SafeImage({ src, fallbackSrc = 'https://picsum.photos/seed/suez/800/600', alt, ...props }: SafeImageProps) {
+export default function SafeImage({ src, fallbackSrc = '/images/suez_hero_delivery.png', alt, ...props }: SafeImageProps) {
   const [imgSrc, setImgSrc] = React.useState<string>(src);
 
   React.useEffect(() => {
