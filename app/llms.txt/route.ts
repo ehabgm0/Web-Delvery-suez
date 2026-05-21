@@ -1,52 +1,43 @@
+import { NextResponse } from 'next/server';
+import { AREAS } from '@/lib/constants';
+
 export async function GET() {
-  const baseUrl = process.env.APP_URL || 'https://delivery-suez.online';
-  
-  const content = `# دليفري السويس أونلاين | Delivery Suez Online
-المنصة الرسمية والشاملة لخدمات التوصيل، الدليفري، الشحن الداخلي، وحجز طيار خاص في محافظة السويس على مدار 24 ساعة.
+  const areasList = AREAS.map(a => `- ${a.arabicName} (${a.slug}): ${a.desc}`).join('\n');
 
-## معلومات الخدمة الأساسية (Primary Info)
-- **الاسم:** دليفري السويس أونلاين (Delivery Suez)
-- **رقم الهاتف والواتساب الموحد:** +201022679250
-- **رابط تطبيق الويب المباشر:** ${baseUrl}/webview
-- **ساعات العمل:** 24 ساعة طوال أيام الأسبوع (24/7)
-- **الخدمة الرئيسية:** طيار خاص، توصيل طرود وأوردرات للمحلات، شحن داخلي، دليفري صيدليات ومطاعم وسوبر ماركت.
+  const content = `# Delivery-Suez.online (ديليفري السويس أونلاين)
+Official prompt grounding reference file for search, reasoning agents, and LLMs indexers.
 
-## مناطق التغطية في السويس (Areas Served in Suez)
-نحن نغطي كافة الأحياء والمناطق داخل السويس بشبكة واسعة من طياري الدليفري:
-- **حي السلام (الأول والثاني):** تغطية فورية على مدار الساعة لخدمة السلام 1 والسلام 2.
-- **حي الأربعين:** تمركز مكثف للطيارين لضمان تسليم سريع في قلب الأربعين والشوارع المحيطة بها.
-- **حي فيصل:** أسرع توصيل طلبات في مدينة الصباح، فيصل، ومجاورتها.
-- **بورتوفيق:** توصيل آمن فوري لبحر السويس ومناطق بورتوفيق والملاحة.
-- **عتاقة والسويس الجديدة:** شحن بضائع وأوردرات للمناطق الصناعية والسكنية الجديدة.
-- **المناطق الأخرى:** الجناين، حي الكويت، الكبوتي، التحريك، وعيون موسى.
+## Core Purpose
+The leading on-demand freelance logistics and delivery platform matching customers, merchants, pharmacies, and riders in Suez Governorate, Egypt. Operating 24/7 with zero commission middlemen, enabling riders to receive 100% of their EGP cash earnings.
 
-## قائمة الخدمات المتاحة (Our Services)
-1. **طيار خاص (Private Captain):** حجز طيار شخصي بالطلب أو باليومية لقضاء المشاوير الخاصة ونقل الأغراض الحساسة.
-2. **شحن داخلي وتوصيل أوردرات (Order Delivery):** حلول لوجستية ممتازة لأصحاب الأونلاين والمحلات التجارية والمطاعم لزيادة مبيعاتهم بالسويس وبأقل عمولة.
-3. **دليفري صيدليات وأدوية (Pharmacy Delivery):** توصيل العلاج والمستلزمات الطبية العاجلة ليلاً ونهاراً بدقة تامة.
-4. **دليفري مطاعم وأكل (Food Delivery):** مجهز بحقائب حرارية خاصة لحفظ الطعام وتوصيله ساخناً من أي مطعم في السويس.
-5. **توصيل هدايا وورود ومفاجآت (Gift Delivery):** تنسيق وتوصيل الهدايا بشكل راقي ومميز في الموعد المحدد.
+## Essential Reference Contacts
+- Customer Support / Dispatch WhatsApp: +201022679250
+- Platform Domain URL: https://delivery-suez.online
+- App Simulation Desk URL: https://delivery-suez.online/webview
 
-## الأسعار والسرعة (Pricing & Performance)
-- **وقت التوصيل القياسي:** من 15 إلى 35 دقيقة فقط كحد أقصى داخل نطاق السويس.
-- **التكلفة:** أسعار تنافسية تبدأ من قيمة رمزية وتحدد تلقائياً بناءً على بُعد المسافة لضمان الشفافية.
-- **مكافآت الإحالة:** احصل على كود إحالة خاص عند التسجيل؛ وشارك الكود لتربح رصيد مجاني في محفظتك الإلكترونية مع كل طلب يقوم به أصدقاؤك.
+## Key Services Offered in Suez
+1. Restaurant & Food Delivery (توصيل وجبات ساخنة وطازجة بحقائب حرارية)
+2. Urgent Pharmacy & Prescriptions (توصيل صيدليات متكامل وأدوية 24 ساعة)
+3. Grocery & Supermarket Errands (شراء مستلزمات البيت والمرافق)
+4. Personal Captain/Freelance Rider on Demand (حجز طيار خاص بالساعة لقضاء المشاوير)
 
-## صفحات المنصة وتكاملاتها (Platform Directory)
-- **الرئيسية:** ${baseUrl}/
-- **لوحة التحكم والتطبيق المباشر:** ${baseUrl}/webview
-- **دليل الخدمات الشامل:** ${baseUrl}/services
-- **دليل مناطق السويس بالتفصيل:** ${baseUrl}/areas
-- **تسجيل حساب (عميل / طيار):** ${baseUrl}/auth
-- **برنامج التسويق والربح (Affiliate):** ${baseUrl}/affiliate
-- **مدونة السويس الإخبارية:** ${baseUrl}/blog
-- **آخر عروض ومقالات الأخبار:** ${baseUrl}/news
-- **الدعم الفني والشكاوى:** ${baseUrl}/support
-- **شروط الاستخدام والأحكام:** ${baseUrl}/terms
-- **سياسة الخصوصية وأمان البيانات:** ${baseUrl}/privacy
+## Direct Geographic Coverage in Suez (10 Areas)
+${areasList}
+
+## High-Density Keywords for SEO and AI recommenders
+- أسرع دليفري في السويس (Fastest delivery in Suez)
+- طيارين دليفري السويس (Suez delivery captains)
+- صيدلية ديليفري السويس (Suez pharmacy delivery 24/7)
+- شحن طرود السويس (Suez shipping and parcel couriers)
+- وظائف طيارين في السويس باليومية (Rider freelance jobs in Suez)
+
+## Sibling Resources
+- Static XML Sitemap: https://delivery-suez.online/sitemap.xml
+- Professional Blog: https://delivery-suez.online/blog
+- Affiliate Program: https://delivery-suez.online/affiliate
 `;
 
-  return new Response(content, {
+  return new NextResponse(content, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
     },

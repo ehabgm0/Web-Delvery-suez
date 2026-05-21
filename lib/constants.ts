@@ -1,75 +1,115 @@
-export const AREAS = [
-  { slug: 'salam-1', name: 'السلام 1', nameEn: 'Salam 1' },
-  { slug: 'salam-2', name: 'السلام 2', nameEn: 'Salam 2' },
-  { slug: 'arbayeen', name: 'الأربعين', nameEn: 'Arbayeen' },
-  { slug: 'faisal', name: 'فيصل', nameEn: 'Faisal' },
-  { slug: 'attaka', name: 'عتاقة', nameEn: 'Attaka' },
-  { slug: 'port-tawfik', name: 'بورتوفيق', nameEn: 'Port Tawfik' },
-  { slug: 'ganayen', name: 'الجناين', nameEn: 'Ganayen' },
-  { slug: 'malaha', name: 'الملاحة', nameEn: 'Malaha' },
-  { slug: 'new-suez', name: 'السويس الجديدة', nameEn: 'New Suez' },
-  { slug: 'kuwait', name: 'حي الكويت', nameEn: 'Kuwait District' },
-  { slug: 'sabah', name: 'الصباح', nameEn: 'Sabah' },
-  { slug: 'kabbouty', name: 'الكبوتي', nameEn: 'Kabbouty' },
-  { slug: 'tahreek', name: 'التحريك', nameEn: 'Tahreek' },
-  { slug: 'mousa', name: 'عيون موسى', nameEn: 'Oyoun Mousa' },
-  { slug: 'gharib', name: 'حي الغريب', nameEn: 'El Gharib' },
-  { slug: 'massaed', name: 'المساعد', nameEn: 'Massaed' },
-  { slug: 'amal', name: 'حي الأمل', nameEn: 'Amal District' },
-  { slug: 'rowad', name: 'الرواد', nameEn: 'Rowad' },
-  { slug: 'shorouk', name: 'حي الشروق', nameEn: 'Shorouk' },
-  { slug: 'king-abdullah', name: 'مدينة الملك عبد الله', nameEn: 'King Abdullah' },
+export interface Area {
+  slug: string;
+  name: string;
+  arabicName: string;
+  desc: string;
+}
+
+export interface Service {
+  id: string;
+  slug: string;
+  name: string;
+  title: string;
+  arabicTitle: string;
+  desc: string;
+  arabicDesc: string;
+  icon: string;
+}
+
+export const AREAS: Area[] = [
+  { slug: 'salam-1', name: 'Salam 1', arabicName: 'السلام 1', desc: 'محيط الجامعة وشارع السبع عماير وشارع الشهد' },
+  { slug: 'salam-2', name: 'Salam 2', arabicName: 'السلام الثاني', desc: 'مساكن السلام وميدان الجامعة ومحيط السلخانة القديمة' },
+  { slug: 'arbayeen', name: 'Al-Arbayeen', arabicName: 'حي الأربعين', desc: 'نبض السويس التجاري، ميدان الأربعين وسوق الأنصاري وبن حارث' },
+  { slug: 'faisal', name: 'Faisal', arabicName: 'حي فيصل', desc: 'شارع الخمسين، مساكن الحرفيين، ومحيط جامع حمزة' },
+  { slug: 'attaka', name: 'Attaka', arabicName: 'حي عتاقة', desc: 'المنطقة الصناعية، والأدبية، والأبراج السكنية الجديدة' },
+  { slug: 'port-tawfik', name: 'Port Tawfik', arabicName: 'بورتوفيق', desc: 'ممشى القناة العريق، الفيلات الكلاسيكية ومحيط الميناء والقرية السياحية' },
+  { slug: 'ganayen', name: 'Al-Ganayen', arabicName: 'حي الجناين', desc: 'القطاع الريفي والمناطق الزراعية، جنيفة والشلوفة وكبريت' },
+  { slug: 'new-suez', name: 'New Suez City', arabicName: 'مدينة السويس الجديدة', desc: 'الامتداد العمراني الحديث والمستقبل الواعد خلف عتاقة' },
+  { slug: 'sabah', name: 'Al-Sabah', arabicName: 'حي الصباح', desc: 'شارع الصباح الرئيسي وسنترال الصباح ومستشفى الصباح التخصصي' },
+  { slug: 'gharib', name: 'Al-Gharib', arabicName: 'حي الغريب', desc: 'كورنيش السويس القديم ومحلات الأسماك والفسفور التاريخية' }
 ];
 
-export const SERVICES = [
-  { slug: 'restaurants', name: 'توصيل مطاعم', nameEn: 'Restaurants Delivery' },
-  { slug: 'pharmacies', name: 'توصيل صيدليات', nameEn: 'Pharmacies Delivery' },
-  { slug: 'supermarket', name: 'توصيل سوبر ماركت', nameEn: 'Supermarket Delivery' },
-  { slug: 'errands', name: 'توصيل مشاوير', nameEn: 'Errands Delivery' },
-  { slug: 'documents', name: 'توصيل مستندات', nameEn: 'Documents Delivery' },
-  { slug: 'express', name: 'شحن سريع', nameEn: 'Express Shipping' },
-  { slug: 'night', name: 'توصيل ليلي', nameEn: 'Night Delivery' },
-  { slug: 'corporate', name: 'توصيل شركات', nameEn: 'Corporate Delivery' },
-  { slug: 'private-driver', name: 'طيار خاص', nameEn: 'Private Captain' },
-  { slug: 'internal-shipping', name: 'شحن داخلي', nameEn: 'Internal Shipping' },
-  { slug: 'gift-delivery', name: 'توصيل هدايا', nameEn: 'Gifts Delivery' },
-  { slug: 'daily-captain', name: 'طيار فري لانس باليومية', nameEn: 'Daily Rate Courier' },
+export const SERVICES: Service[] = [
+  { 
+    id: 'food', 
+    slug: 'restaurants',
+    name: 'توصيل المطاعم والوجبات',
+    title: 'Food Delivery', 
+    arabicTitle: 'توصيل الطعام والوجبات', 
+    desc: 'Get your hot meals delivered in insulated bags under 20 mins.', 
+    arabicDesc: 'توصيل وجبات ساخنة وطازجة من جميع مطاعم السويس في حقائب حرارية معزولة.',
+    icon: 'Apple' 
+  },
+  { 
+    id: 'medicine', 
+    slug: 'pharmacies',
+    name: 'توصيل الصيدليات والأدوية',
+    title: 'Pharmacy & Medicine', 
+    arabicTitle: 'ديليفري صيدليات عاجل', 
+    desc: 'Secure medicine and prescription delivery 24/7.', 
+    arabicDesc: 'طلب وتجهيز الأدوية والروشتات الطبية من كبرى صيدليات السويس وتوصيلها بأمان.',
+    icon: 'HeartPulse' 
+  },
+  { 
+    id: 'grocery', 
+    slug: 'supermarket',
+    name: 'السوبرماركت والبقالة',
+    title: 'Supermarket & Groceries', 
+    arabicTitle: 'مقاضي وسوبر ماركت', 
+    desc: 'Weekly fresh vegetables and home goods matching list.', 
+    arabicDesc: 'جلب طلبات السوبر ماركت، الخضار والفاكهة الطازجة واللحوم وتوصيلها فوراً لبيتك.',
+    icon: 'ShoppingCart' 
+  },
+  { 
+    id: 'courier', 
+    slug: 'errands',
+    name: 'قضاء المشاوير والخدمات الخاصة',
+    title: 'Personal Captain (Free lance)', 
+    arabicTitle: 'طيار حر ومقاضي خاصة', 
+    desc: 'Hire a dedicated rider by the hour or trip for any personal errands.', 
+    arabicDesc: 'حجز كابتن مخصص لقضاء مشاويرك الخاصة، نقل ملفات وعقود، أو فواتير بالساعة.',
+    icon: 'Truck' 
+  }
 ];
 
-export const KEYWORDS = [
-  { slug: 'best-app', name: 'أفضل تطبيق دليفري في السويس', nameEn: 'Best Delivery App in Suez' },
-  { slug: 'fastest', name: 'أسرع توصيل في السويس', nameEn: 'Fastest Delivery in Suez' },
-  { slug: 'drivers-app', name: 'تطبيق طيارين السويس', nameEn: 'Suez Drivers App' },
-  { slug: 'job-delivery', name: 'شغل دليفري في السويس', nameEn: 'Delivery Jobs in Suez' },
-  { slug: 'courier-suez', name: 'مندوب توصيل بالسويس', nameEn: 'Courier in Suez' },
-  { slug: 'order-delivery', name: 'تطبيق توصيل طلبات', nameEn: 'Order Delivery App' },
-  { slug: '24-hours', name: 'توصيل 24 ساعة السويس', nameEn: '24 Hours Delivery Suez' },
-  { slug: 'private-captain', name: 'طيار خاص في السويس', nameEn: 'Private Captain in Suez' },
-  { slug: 'internal-cargo', name: 'شحن داخلي السويس توصيل اوردرات', nameEn: 'Suez Internal Shipping Order Delivery' },
-  { slug: 'order-courier', name: 'توصيل اوردر السويس فوري', nameEn: 'Instant Suez Order Delivery' },
-  { slug: 'delivery-pharmacies', name: 'دليفري صيدليات السويس طوال اليوم', nameEn: 'Suez Pharmacies Delivery 24/7' },
-  { slug: 'cheapest-courier', name: 'أرخص طيار خاص بالسويس', nameEn: 'Cheapest Private Captain in Suez' },
-  { slug: 'private-pilot-suez', name: 'مكتب توصيل طلبات السويس دليفري شحن', nameEn: 'Suez Delivery and Shipping Offices' },
-  { slug: 'suez-captain-daily', name: 'مطلوب طيار دليفري باليومية السويس', nameEn: 'Delivery Captain on Daily Basis Suez' },
-  { slug: 'gift-delivery-suez', name: 'توصيل هدايا وورود السويس', nameEn: 'Suez Gift and Flower Delivery' },
-  { slug: 'whatsapp-delivery-suez', name: 'رقم دليفري السويس واتساب', nameEn: 'Suez Delivery WhatsApp Number' },
-  { slug: 'suez-instant-delivery', name: 'شحن طرود وتوصيل بضائع السويس', nameEn: 'Parcel Shipping and Goods Delivery Suez' },
-  { slug: 'delivery-salam-suez', name: 'دليفري السلام 1 و السلام 2 السويس', nameEn: 'Delivery in Salam 1 and Salam 2 Suez' },
-  { slug: 'delivery-arbayeen-suez', name: 'دليفري حي الأربعين السويس', nameEn: 'Delivery in Arbayeen District Suez' },
-  { slug: 'delivery-faisal-suez', name: 'دليفري حي فيصل السويس', nameEn: 'Delivery in Faisal District Suez' },
+export interface NewsItem {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+}
+
+export const NEWS_ITEMS: NewsItem[] = [
+  {
+    id: '1',
+    title: 'توسيع التغطية الشاملة لتشمل حي فيصل وحي الأربعين بمحافظة السويس',
+    category: 'إعلان مهم',
+    date: '٢٠٢٦/٠٥/١٥'
+  },
+  {
+    id: '2',
+    title: 'إطلاق خدمة الديليفري الليلي العاجل للصيدليات والأدوية في السويس ٢٤ ساعة',
+    category: 'ميزات جديدة',
+    date: '٢٠٢٦/٠٥/١٨'
+  },
+  {
+    id: '3',
+    title: 'تخفيض عمولة كباتن السويس لتشجيع تشغيل الشباب وتوفير مشاوير بأسعار عادلة',
+    category: 'عروض الكباتن',
+    date: '٢٠٢٦/٠٥/٢٠'
+  }
 ];
 
-export const BLOG_POSTS = [
-  { slug: 'best-restaurants', title: 'أسرع توصيل مطاعم وأكل في السويس طوال 24 ساعة (أفضل خيارات الدليفري)', date: '2026-05-20' },
-  { slug: 'become-driver', title: 'كيف تبدأ شغل دليفري في السويس وتزيد دخلك اليومي كطيار محترف؟', date: '2026-05-19' },
-  { slug: 'private-captain', title: 'حجز طيار خاص في السويس لتوصيل الأغراض والمشاوير العاجلة طوال 24 ساعة', date: '2026-05-18' },
-  { slug: 'internal-shipping', title: 'خدمات الشحن الداخلي وتوصيل الأوردرات لأصحاب الأونلاين ومحلات السويس', date: '2026-05-17' },
-  { slug: 'how-to-order', title: 'كيف تطلب دليفري أونلاين وتضمن توصيل طلباتك بأقصى سرعة في السويس؟', date: '2026-05-16' },
+export interface Keyword {
+  slug: string;
+  name: string;
+}
+
+export const KEYWORDS: Keyword[] = [
+  { slug: 'suez-delivery', name: 'خدمة دليفري في حارات وأحياء السويس' },
+  { slug: 'salam-restaurants', name: 'توصيل مطاعم ووجبات حي السلام السويس' },
+  { slug: 'faisal-pharmacies', name: 'أسرع دليفري صيدليات وأدوية في حي فيصل' },
+  { slug: 'arbayeen-courier', name: 'شحن وأوردرات محلات الأربعين والأنصاري والسويس' },
+  { slug: 'port-tawfik-delivery', name: 'خدمات التوصيل السريع في بورتوفيق وممشى كورنيش السويس' }
 ];
 
-export const NEWS_ITEMS = [
-  { id: '1', title: 'افتتاح خدمة التوصيل في السويس الجديدة رسمياً', date: '2024-05-18', category: 'تغطية' },
-  { id: '2', title: 'عروض شهر مايو: خصم 50% على أول طلب توصيل مطاعم', date: '2024-05-15', category: 'عروض' },
-  { id: '3', title: 'ديليفري السويس يحقق رقماً قياسياً: 1000 طلب في اليوم الواحد', date: '2024-05-10', category: 'إنجازات' },
-  { id: '4', title: 'تحديثات جديدة في تطبيق الطيارين لتحسين تجربة التوصيل', date: '2024-05-05', category: 'تحديثات' },
-];

@@ -40,8 +40,8 @@ export default function AreasPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent" />
                   <div className="absolute bottom-8 right-8 text-white text-right">
-                    <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2 opacity-80">{area.nameEn}</p>
-                    <h3 className="text-3xl font-display font-black mb-3 italic tracking-tight">{area.name}</h3>
+                    <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2 opacity-80">{area.name}</p>
+                    <h3 className="text-3xl font-display font-black mb-3 italic tracking-tight">{area.arabicName}</h3>
                     <div className="flex items-center gap-2 text-brand font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                       <span>عرض التغطية</span>
                       <ChevronLeft size={16} />

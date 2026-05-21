@@ -1,66 +1,96 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { AREAS } from '@/lib/constants';
+import { Phone, Mail, MapPin, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-10">
+    <footer className="bg-slate-950 text-white pt-20 pb-8 text-right font-sans" dir="rtl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
-            <h2 className="text-3xl font-display font-bold mb-6 italic">Delivery <span className="text-brand">Suez</span></h2>
-            <p className="text-slate-400 max-w-md leading-relaxed mb-8">
-              المنصة رقم #1 للتوصيل في مدينة السويس. نحن نجمع بين التكنولوجيا المتطورة وسرعة التنفيذ لخدمة أهالي السويس الكرام.
+        
+        {/* Foot top layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          {/* Col 1: Brand Info */}
+          <div>
+            <div className="flex items-center gap-3 mb-6 justify-end">
+              <span className="font-display font-black text-2xl tracking-tight">ديليفري السويس</span>
+              <div className="w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold text-xs">DS</div>
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 font-medium">
+              المنصة رقم واحد للحلول اللوجستية وتوصيل الطلبات الفورية في محافظة السويس. نخدم الأفراد والمطاعم والصيدليات بخبرة وأمان وتغطية متكاملة طوال الـ 24 ساعة.
             </p>
-            <div className="flex gap-4">
-              <Link href="https://www.facebook.com/DeliverySuezOnline" className="p-3 bg-white/5 rounded-full hover:bg-brand transition-colors">
-                <Facebook size={20} />
-              </Link>
-              <Link href="https://www.instagram.com/deliverysuezonline" className="p-3 bg-white/5 rounded-full hover:bg-brand transition-colors">
-                <Instagram size={20} />
-              </Link>
-              <Link href="https://www.tiktok.com/@delivery.Suez" className="p-3 bg-white/5 rounded-full hover:bg-brand transition-colors">
-                <Twitter size={20} />
-              </Link>
+            <div className="space-y-3 font-semibold text-xs text-slate-300">
+              <p className="flex items-center gap-2 justify-end">
+                <span>01022679250</span>
+                <Phone size={14} className="text-brand" />
+              </p>
+              <p className="flex items-center gap-2 justify-end">
+                <span>info@delivery-suez.online</span>
+                <Mail size={14} className="text-brand" />
+              </p>
+              <p className="flex items-center gap-2 justify-end">
+                <span>محافظة السويس، جمهورية مصر العربية</span>
+                <MapPin size={14} className="text-brand" />
+              </p>
             </div>
           </div>
 
+          {/* Col 2: Services / Pages */}
           <div>
-            <h3 className="font-bold text-lg mb-6 tracking-wide uppercase text-brand/80">المناطق والأحياء</h3>
-            <ul className="space-y-4 text-slate-400">
-              <li><Link href="/area/salam-1" className="hover:text-white transition-colors">السلام 1</Link></li>
-              <li><Link href="/area/arbayeen" className="hover:text-white transition-colors">الأربعين</Link></li>
-              <li><Link href="/area/faisal" className="hover:text-white transition-colors">فيصل</Link></li>
-              <li><Link href="/area/port-tawfik" className="hover:text-white transition-colors">بورتوفيق</Link></li>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6 border-r-2 border-brand pr-2">صفحات تهمك</h4>
+            <ul className="space-y-3 font-bold text-sm text-slate-300">
+              <li><Link href="/" className="hover:text-brand transition-colors">الصفحة الرئيسية</Link></li>
+              <li><Link href="/blog" className="hover:text-brand transition-colors">مدونة المنصة</Link></li>
+              <li><Link href="/webview" className="hover:text-brand transition-colors">لوحة محاكاة وتتبع الكباتن</Link></li>
+              <li><Link href="/affiliate" className="hover:text-brand transition-colors">برنامج الشركاء (شارك واكسب) 🎁</Link></li>
+              <li><Link href="https://wa.me/201022679250" target="_blank" className="hover:text-brand transition-colors">الدعم الفني المباشر</Link></li>
             </ul>
           </div>
 
+          {/* Col 3: Areas 1 */}
           <div>
-            <h3 className="font-bold text-lg mb-6 tracking-wide uppercase text-brand/80">تواصل معنا</h3>
-            <ul className="space-y-4 text-slate-400">
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-brand" />
-                <span dir="ltr">01022679250</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <MapPin size={18} className="text-brand" />
-                <span>السويس، السلام 1</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-brand" />
-                <span>info@delivery-suez.online</span>
-              </li>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6 border-r-2 border-brand pr-2">أحياء السويس (1)</h4>
+            <ul className="space-y-3 font-medium text-xs text-slate-300">
+              {AREAS.slice(0, 5).map((area) => (
+                <li key={area.slug}>
+                  <Link href={`/area/${area.slug}`} className="hover:text-brand transition-colors flex items-center justify-end gap-1">
+                    <span>دليفري في {area.arabicName}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Col 4: Areas 2 */}
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6 border-r-2 border-brand pr-2">أحياء السويس (2)</h4>
+            <ul className="space-y-3 font-medium text-xs text-slate-300">
+              {AREAS.slice(5).map((area) => (
+                <li key={area.slug}>
+                  <Link href={`/area/${area.slug}`} className="hover:text-brand transition-colors flex items-center justify-end gap-1">
+                    <span>توصيل في {area.arabicName}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
-        <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Delivery Suez Online. جميع الحقوق محفوظة.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">سياسة الخصوصية</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">الشروط والأحكام</Link>
-          </div>
+        {/* Foot divider */}
+        <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row-reverse justify-between items-center text-xs text-slate-400">
+          <p className="mb-4 md:mb-0 font-bold flex items-center gap-1">
+            <span>صُنع بحب في السويس لدعم طيارينا وعملائنا</span>
+            <Heart size={12} className="text-red-500 fill-red-500" />
+          </p>
+          <p className="font-mono">
+            © {new Date().getFullYear()} Delivery-Suez.online. All rights reserved.
+          </p>
         </div>
+
       </div>
     </footer>
   );
