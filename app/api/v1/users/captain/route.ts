@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const captainRef = doc(db, 'captains', phone);
+    const captainRef = doc(db, 'users', phone);
     const captainSnap = await getDoc(captainRef);
 
     const isOnlineVal = isOnline !== undefined ? Boolean(isOnline) : true;
@@ -46,16 +46,19 @@ export async function POST(req: NextRequest) {
         vehicleType: vehicle,
         isOnline: isOnlineVal,
         status: statusVal,
+        role: 'captain',
         updatedAt: new Date().toISOString()
       });
     } else {
       await setDoc(captainRef, {
         id: phone,
+        uid: phone, // keep consistent with User entity
         phone,
         displayName,
         vehicleType: vehicle,
         isOnline: isOnlineVal,
         status: statusVal,
+        role: 'captain',
         lat: 29.966, // Initial default coordinate in Suez city center
         lng: 32.549,
         heading: 0,

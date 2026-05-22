@@ -16,11 +16,11 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // 1. Fetch active captains count from Firestore "captains"
+    // 1. Fetch active captains count from Firestore "users"
     let onlineCaptainsCount = 42; // default dynamic fallback
     try {
-      const captainsRef = collection(db, 'captains');
-      const qCaptains = query(captainsRef, where('isOnline', '==', true));
+      const captainsRef = collection(db, 'users');
+      const qCaptains = query(captainsRef, where('role', '==', 'captain'), where('isOnline', '==', true));
       const captainSnapshot = await getDocs(qCaptains);
       if (!captainSnapshot.empty) {
         onlineCaptainsCount = captainSnapshot.size;

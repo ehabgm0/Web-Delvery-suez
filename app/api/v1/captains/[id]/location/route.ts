@@ -37,8 +37,8 @@ export async function POST(
       );
     }
 
-    // 1. Update Captain location in the "captains" collection
-    const captainRef = doc(db, 'captains', captainId);
+    // 1. Update Captain location in the "users" collection
+    const captainRef = doc(db, 'users', captainId);
     const captainSnap = await getDoc(captainRef);
 
     const latVal = Number(lat);

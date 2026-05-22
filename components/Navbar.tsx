@@ -24,16 +24,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <Link href="/" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">الرئيسية</Link>
-            <Link href="/blog" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors flex items-center gap-1">
-              <FileText size={14} className="text-brand" />
-              أحدث المقالات والأخبار
-            </Link>
-            <Link href="/#areas" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">مناطق التغطية</Link>
-            <Link href="/affiliate" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">برنامج الشركاء 🎁</Link>
-            <Link href="/developer" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">بوابة المطورين (API) 💻</Link>
-            <Link href="/#faq" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">الأسئلة الشائعة</Link>
+            <Link href="/track" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">تتبع طلبك 📍</Link>
+            <Link href="/signup/customer" className="font-bold text-sm text-indigo-600 hover:text-brand transition-colors">تسجيل عميل 🎁</Link>
+            <Link href="/signup/captain" className="font-bold text-sm text-emerald-600 hover:text-brand transition-colors">انضم ككابتن 🏍️</Link>
+            <Link href="/blog" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">المدونة</Link>
+            <Link href="/affiliate" className="font-bold text-sm text-slate-600 hover:text-brand transition-colors">الشركاء 🎁</Link>
+            <Link href="/developer" className="font-bold text-sm text-slate-600 hover:text-branded transition-colors">المطورين (API) 💻</Link>
           </div>
 
           {/* Action Call to Action button */}
@@ -71,19 +69,32 @@ export default function Navbar() {
             الرئيسية
           </Link>
           <Link 
-            href="/blog" 
+            href="/track" 
             onClick={() => setIsOpen(false)}
-            className="block font-bold text-slate-800 hover:text-brand transition-colors py-2 flex items-center gap-1.5"
+            className="block font-bold text-slate-800 hover:text-brand transition-colors py-2 text-indigo-600"
           >
-            <FileText size={16} className="text-brand" />
-            أحدث المقالات وأخبار السويس
+            📍 تتبع طلبك (Live Tracking)
           </Link>
           <Link 
-            href="/#areas" 
+            href="/signup/customer" 
+            onClick={() => setIsOpen(false)}
+            className="block font-bold text-slate-800 hover:text-brand transition-colors py-2 text-indigo-600 font-black"
+          >
+            🎁 إنشاء حساب عميل (شحن 50ج)
+          </Link>
+          <Link 
+            href="/signup/captain" 
+            onClick={() => setIsOpen(false)}
+            className="block font-bold text-slate-800 hover:text-brand transition-colors py-2 text-emerald-600 font-black"
+          >
+            🏍️ انضم كطيار بالسويس (ابدأ العمل)
+          </Link>
+          <Link 
+            href="/blog" 
             onClick={() => setIsOpen(false)}
             className="block font-bold text-slate-800 hover:text-brand transition-colors py-2"
           >
-            مناطق التغطية
+            مدونة المنصة والأخبار
           </Link>
           <Link 
             href="/affiliate" 
@@ -95,16 +106,9 @@ export default function Navbar() {
           <Link 
             href="/developer" 
             onClick={() => setIsOpen(false)}
-            className="block font-bold text-slate-800 hover:text-brand transition-colors py-2 text-brand"
-          >
-            بوابة المطورين والـ API 💻
-          </Link>
-          <Link 
-            href="/#faq" 
-            onClick={() => setIsOpen(false)}
             className="block font-bold text-slate-800 hover:text-brand transition-colors py-2"
           >
-            الأسئلة الشائعة
+            بوابة المطورين والـ API 💻
           </Link>
           <div className="pt-4 border-t border-slate-100">
             <Link 
